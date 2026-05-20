@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GEOFIELD // About Us</title>
+
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="transition.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
+  <style>
+
+    /* ─────────────────────────────
+      ABOUT PAGE
+    ───────────────────────────── */
+
+    .about-shell {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      padding: 140px 7vw 120px;
+      z-index: 2;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: stretch;
+    }
+
+    /* ─────────────────────────────
+       HERO IMAGE PANEL
+    ───────────────────────────── */
+
+    .team-hero {
+      position: relative;
+      min-height: 620px;
+      overflow: hidden;
+
+      border:
+        1px solid rgba(253,219,58,0.14);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(14,18,28,0.7),
+          rgba(5,7,12,0.92)
+        );
+
+      box-shadow:
+        0 0 40px rgba(0,0,0,0.45);
+
+      backdrop-filter: blur(8px);
+    }
+
+    .team-hero::before {
+      content: '';
+
+      position: absolute;
+      inset: 14px;
+
+      border:
+        1px solid rgba(253,219,58,0.08);
+
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .team-photo {
+      position: absolute;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      filter:
+        grayscale(0.35)
+        contrast(1.05)
+        brightness(0.72);
+
+      opacity: 0.9;
+    }
+
+    .team-gradient {
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(0,0,0,0.05),
+          rgba(0,0,0,0.75)
+        );
+
+      z-index: 2;
+    }
+
+    .team-meta {
+      position: absolute;
+      left: 48px;
+      bottom: 48px;
+
+      z-index: 6;
+    }
+
+    .team-meta-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+
+      margin-bottom: 18px;
+
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+
+      color: var(--yellow);
+    }
+
+    .team-meta-tag::before {
+      content: '';
+
+      width: 28px;
+      height: 1px;
+
+      background: var(--yellow);
+
+      opacity: 0.7;
+    }
+
+    .team-title {
+      font-size: clamp(2.4rem, 5vw, 5rem);
+      line-height: 0.95;
+      font-weight: 700;
+
+      letter-spacing: 0.5em;
+
+      color: var(--text-primary);
+
+      margin-bottom: 20px;
+
+      max-width: 700px;
+    }
+
+    .team-description {
+      max-width: 620px;
+
+      color: var(--text-secondary);
+
+      line-height: 1.8;
+
+      font-size: 15px;
+    }
+
+    /* ─────────────────────────────
+       SIDE DOSSIER PANEL
+    ───────────────────────────── */
+
+    .team-dossier {
+      position: relative;
+
+      border:
+        1px solid rgba(253,219,58,0.14);
+
+      background:
+        rgba(8,10,18,0.82);
+
+      padding: 42px;
+
+      overflow: hidden;
+    }
+
+    .team-dossier::before {
+      content: '';
+
+      position: absolute;
+      inset: 14px;
+
+      border:
+        1px solid rgba(253,219,58,0.08);
+
+      pointer-events: none;
+    }
+
+    .dossier-header {
+      margin-bottom: 40px;
+    }
+
+    .dossier-tag {
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--yellow);
+
+      margin-bottom: 16px;
+    }
+
+    .dossier-title {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.1;
+
+      color: var(--text-primary);
+
+      margin-bottom: 18px;
+    }
+
+    .dossier-desc {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .dossier-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+
+      margin-top: 36px;
+    }
+
+    .stat-box {
+      border:
+        1px solid rgba(253,219,58,0.12);
+
+      padding: 20px;
+
+      background:
+        rgba(255,255,255,0.02);
+    }
+
+    .stat-label {
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+
+      color: var(--text-secondary);
+
+      margin-bottom: 12px;
+    }
+
+    .stat-value {
+      font-size: 1.2rem;
+      font-weight: 700;
+
+      color: var(--yellow);
+    }
+
+    /* ─────────────────────────────
+       LIGHT THEME
+    ───────────────────────────── */
+
+    [data-theme="light"] .team-dossier,
+    [data-theme="light"] .member-card {
+      background: rgba(255,255,255,0.74);
+    }
+
+    [data-theme="light"] .team-title,
+    [data-theme="light"] .dossier-title,
+    [data-theme="light"] .section-title,
+    [data-theme="light"] .member-name {
+      color: #111;
+    }
+
+    [data-theme="light"] .team-description,
+    [data-theme="light"] .dossier-desc,
+    [data-theme="light"] .member-desc,
+    [data-theme="light"] .member-status {
+      color: rgba(0,0,0,0.72);
+    }
+
+    /* ─────────────────────────────
+       RESPONSIVE
+    ───────────────────────────── */
+
+    @media (max-width: 1100px) {
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .member-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+    @media (max-width: 720px) {
+
+      .member-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-shell {
+        padding-inline: 20px;
+      }
+
+      .team-meta {
+        left: 28px;
+        right: 28px;
+        bottom: 28px;
+      }
+
+      .team-dossier {
+        padding: 28px;
+      }
+
+    }
+
+    /* ── HERO TITLE CURTAIN WIPE ── */
+.hero-title-wrap {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.hero-title-wrap .line {
+  display: block;
+  opacity: 0;
+  animation: textAppear 0s forwards;
+}
+
+/* the sweeping bar */
+.hero-title-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--yellow);
+  transform: translateX(-101%);
+  animation: curtainWipe 0.6s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+}
+
+/* stagger per line */
+.hero-title-wrap:nth-child(1)::after { animation-delay: 0.1s; }
+.hero-title-wrap:nth-child(2)::after { animation-delay: 0.28s; }
+.hero-title-wrap:nth-child(3)::after { animation-delay: 0.46s; }
+.hero-title-wrap:nth-child(4)::after { animation-delay: 0.64s; }
+.hero-title-wrap:nth-child(5)::after { animation-delay: 0.82s; }
+
+.hero-title-wrap:nth-child(1) .line { animation-delay: 0.28s; }
+.hero-title-wrap:nth-child(2) .line { animation-delay: 0.46s; }
+.hero-title-wrap:nth-child(3) .line { animation-delay: 0.64s; }
+.hero-title-wrap:nth-child(4) .line { animation-delay: 0.82s; }
+.hero-title-wrap:nth-child(5) .line { animation-delay: 1.0s; }
+
+@keyframes curtainWipe {
+  0%   { transform: translateX(-101%); }
+  45%  { transform: translateX(0%); }       /* bar covers text */
+  100% { transform: translateX(101%); }     /* bar exits right */
+}
+
+@keyframes textAppear {
+  to { opacity: 1; }
+}
+.hero-title .line { color: var(--text-primary); }
+.hero-title .line.accent { color: var(--yellow); }
+.hero-tag {
+  position: relative;
+  display: inline-block;
+  color: var(--yellow);
+  animation: tagFlicker 3s ease-in-out infinite;
+}
+
+/* the sweep highlight */
+.hero-tag::before {
+  content: '';
+  position: absolute;
+  inset: -4px -8px;
+  background: var(--yellow);
+  opacity: 0;
+  animation: tagSweep 3s ease-in-out infinite;
+  z-index: -1;
+}
+
+/* text color flips to dark when highlight is behind it */
+@keyframes tagSweep {
+  0%, 55%, 100% { opacity: 0;    transform: scaleX(0); transform-origin: left; }
+  60%            { opacity: 1;    transform: scaleX(1); transform-origin: left; }
+  85%            { opacity: 1;    transform: scaleX(1); transform-origin: right; }
+  90%            { opacity: 0;    transform: scaleX(0); transform-origin: right; }
+}
+
+
+[data-theme="light"] .hero-tag {
+  color: #111;
+}
+
+[data-theme="light"] .hero-tag::before {
+  background: #111;
+}
+
+@keyframes tagFlicker {
+  0%, 55%, 100% { color: var(--yellow); opacity: 1; }
+  60%, 85%      { color: var(--bg-base); opacity: 1; }
+  86%, 90%      { color: var(--yellow); opacity: 1; }
+}
+
+@keyframes tagFlickerLight {
+  0%, 55%, 100% { color: #111; opacity: 1; }
+  60%, 85%      { color: #fff; opacity: 1; }
+  86%, 90%      { color: #111; opacity: 1; }
+}
+
+[data-theme="light"] .hero-tag {
+  animation: tagFlickerLight 3s ease-in-out infinite;
+}
+
+
+/* ── FLOAT ANIMATION ── */
+
+@keyframes emblemFloat {
+
+  0%,100% {
+    transform:
+      translateY(0px)
+      rotate(0deg)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translateY(-10px)
+      rotate(1deg)
+      scale(1.02);
+  }
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="scanlines"></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+      <polygon points="14,2 26,8 26,20 14,26 2,20 2,8" stroke="#FDDB3A" stroke-width="1.5" fill="none"/>
+      <circle cx="14" cy="14" r="3" fill="#FDDB3A"/>
+      <line x1="14" y1="2"  x2="14" y2="11" stroke="#FDDB3A" stroke-width="1" opacity="0.5"/>
+      <line x1="14" y1="17" x2="14" y2="26" stroke="#FDDB3A" stroke-width="1" opacity="0.5"/>
+      <line x1="2"  y1="8"  x2="11" y2="13" stroke="#FDDB3A" stroke-width="1" opacity="0.5"/>
+      <line x1="17" y1="15" x2="26" y2="20" stroke="#FDDB3A" stroke-width="1" opacity="0.5"/>
+      <line x1="26" y1="8"  x2="17" y2="13" stroke="#FDDB3A" stroke-width="1" opacity="0.5"/>
+      <line x1="11" y1="15" x2="2"  y2="20" stroke="#FDDB3A" stroke-width="1" opacity="0.5"/>
+    </svg>
+    <span class="nav-logo-text">GEO<span>FIELD</span></span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="map.html">Maps</a></li>
+    <li><a href="data.html">Data</a></li>
+    <li><a href="about.html" class="active">About Us</a></li>
+  </ul>
+<div class="nav-actions">
+  <button
+    id="language-toggle"
+    class="language-btn"
+  >
+    LOK
+  </button>
+  <button id="theme-toggle" class="theme-btn">◐</button>
+</div>
+
+</nav>
+
+<div class="corner corner-tl"></div>
+<div class="corner corner-tr"></div>
+<div class="corner corner-bl"></div>
+<div class="corner corner-br"></div>
+
+<div id="world">
+
+  <div class="bg-grid"></div>
+
+  <main class="about-shell">
+
+    <!-- ─────────────────────────────
+         SECTION 1 — INTRO
+    ───────────────────────────── -->
+
+    <section class="about-section hero-section">
+      <div class="hero-grid"></div>
+
+
+      <div class="hero-noise"></div>
+
+      <div class="hero-content">
+
+        <div class="hero-tag">
+          ──────  GEOFIELD  ──────  // ABOUT US
+        </div>
+
+<h1 class="hero-title">
+  <span class="hero-title-wrap"><span class="line">INSTITUTE OF</span></span>
+  <span class="hero-title-wrap"><span class="line">TECHNOLOGY AND</span></span>
+  <span class="hero-title-wrap"><span class="line">BUSINESS</span></span>
+  <span class="hero-title-wrap"><span class="line">MUHAMMADIYAH</span></span>
+  <span class="hero-title-wrap"><span class="line">POLMAN</span></span>
+</h1>
+        <div class="hero-line"></div>
+
+        <p class="hero-subtitle">
+          DIGITAL BUSINESS MAJOR
+        </p>
+
+      </div>
+
+      <div class="hero-side-label">
+        EST. 2026
+      </div>
+
+      <div class="hero-scroll">
+        SCROLL TO EXPLORE
+      </div>
+
+    </section>
+
+
+    <!-- ─────────────────────────────
+         SECTION 3 — OUR TEAM
+    ───────────────────────────── -->
+
+    <section class="about-section team-section">
+
+      <div class="section-index">
+        SECTION 03
+      </div>
+
+      <div class="team-header">
+
+        <div class="team-label">
+          OUR TEAM
+        </div>
+
+        <h2 class="team-heading">
+          OPERATIONAL UNIT
+        </h2>
+
+      </div>
+
+      <div class="team-placeholder">
+
+        <div class="team-placeholder-line"></div>
+
+        <div class="team-placeholder-text">
+          TEAM DOSSIER — TBD
+        </div>
+
+        <div class="team-placeholder-line"></div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<script src="main_script.js"></script>
+<script src="transition.js"></script>
+<!-- LANGUAGE MODAL -->
+
+<div
+  class="lang-modal"
+  id="lang-modal"
+>
+
+  <div class="lang-panel">
+
+    <div
+      class="lang-title"
+      id="lang-title"
+    >
+      Mauki pakai bahasa apa?
+    </div>
+
+    <div class="lang-options">
+
+      <button
+        class="lang-option"
+        data-lang="lokal"
+      >
+        Lokal
+      </button>
+
+      <button
+        class="lang-option"
+        data-lang="english"
+      >
+        English
+      </button>
+    </div>
+    <button
+  class="lang-confirm"
+  id="lang-confirm"
+>
+  Okemi
+</button>
+
+  </div>
+
+</div>
+</body>
+</html>

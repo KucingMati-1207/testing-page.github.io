@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GEOFIELD</title>
+  <link rel="stylesheet" href="main.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+  <link rel="stylesheet" href="transition.css"/>
+</head>
+<body>
+
+<div class="scanlines"></div>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+      <polygon points="14,2 26,8 26,20 14,26 2,20 2,8" stroke="#FDDB3A" stroke-width="1.5" fill="none"/>
+      <circle cx="14" cy="14" r="3" fill="#FDDB3A"/>
+      <line x1="14" y1="2"  x2="14" y2="11" stroke="#FDDB3A" stroke-width="1" opacity="0.5"/>
+      <line x1="14" y1="17" x2="14" y2="26" stroke="#FDDB3A" stroke-width="1" opacity="0.5"/>
+      <line x1="2"  y1="8"  x2="11" y2="13" stroke="#FDDB3A" stroke-width="1" opacity="0.5"/>
+      <line x1="17" y1="15" x2="26" y2="20" stroke="#FDDB3A" stroke-width="1" opacity="0.5"/>
+      <line x1="26" y1="8"  x2="17" y2="13" stroke="#FDDB3A" stroke-width="1" opacity="0.5"/>
+      <line x1="11" y1="15" x2="2"  y2="20" stroke="#FDDB3A" stroke-width="1" opacity="0.5"/>
+    </svg>
+    <span class="nav-logo-text">GEO<span>FIELD</span></span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="map.html">Maps</a></li>
+    <li><a href="data.html">Data</a></li>
+    <li><a href="about.html">About Us</a></li>
+  </ul>
+<div class="nav-actions">
+
+  <button
+    id="language-toggle"
+    class="language-btn"
+  >
+    LOK
+  </button>
+
+  <button
+    id="theme-toggle"
+    class="theme-btn"
+  >
+    ◐
+  </button>
+
+</div>
+</div>
+</nav>
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+<div id="world">
+
+  <div class="bg-grid"></div>
+
+
+
+  <div class="hero">
+    <div class="hero-eyebrow">// Geospatial Information System</div>
+    <div class="hero-title">GEO<span>FIELD</span></div>
+    <div class="hero-sub">Explore the district — one point at a time</div>
+
+    <div class="cards-row">
+
+      <div class="tilt-card" data-tilt data-tilt-max="18" data-tilt-speed="300" data-tilt-glare data-tilt-max-glare="0.2" data-tilt-perspective="600">
+  <div class="tilt-inner">
+    <div class="card-tag">Cultural</div>
+    <div class="card-title">Balanipa Heritage</div>
+    <div class="card-desc">Pusat sejarah Mandar. Terdiri dari makam bersejarah, museum, dan sentra kerajinan tenun Sutra Mandar (Lipaq Saqbe).</div>
+    <div class="card-footer">
+      <div class="card-stat">
+        <span class="card-stat-num">15</span>
+        <span class="card-stat-label">Heritage Sites</span>
+      </div>
+      <button class="card-btn">Explore</button>
+    </div>
+  </div>
+  <div class="card-corner"></div>
+</div>
+<div class="tilt-card" data-tilt data-tilt-max="18" data-tilt-speed="300" data-tilt-glare data-tilt-max-glare="0.2" data-tilt-perspective="600">
+  <div class="tilt-inner">
+    <div class="card-tag">Culinary</div>
+    <div class="card-title">Bahari Food Center</div>
+    <div class="card-desc">Pusat kuliner laut khas Mandar seperti Bau Peapi dan Jepa, aktif terutama menjelang malam di pesisir Polewali.</div>
+    <div class="card-footer">
+      <div class="card-stat">
+        <span class="card-stat-num">8</span>
+        <span class="card-stat-label">Food Zones</span>
+      </div>
+      <button class="card-btn">Explore</button>
+    </div>
+  </div>
+  <div class="card-corner"></div>
+</div>
+<div class="tilt-card" data-tilt data-tilt-max="18" data-tilt-speed="300" data-tilt-glare data-tilt-max-glare="0.2" data-tilt-perspective="600">
+  <div class="tilt-inner">
+    <div class="card-tag">Nature</div>
+    <div class="card-title">Polman Eco-Tourism</div>
+    <div class="card-desc">Dari Air Terjun Indo Rannuang hingga pantai eksotis. Destinasi alam paling dominan di Sulawesi Barat.</div>
+    <div class="card-footer">
+      <div class="card-stat">
+        <span class="card-stat-num">42</span>
+        <span class="card-stat-label">Destinations</span>
+      </div>
+      <button class="card-btn">Explore</button>
+    </div>
+  </div>
+  <div class="card-corner"></div>
+</div>
+      <div class="tilt-card" data-tilt data-tilt-max="18" data-tilt-speed="300" data-tilt-glare data-tilt-max-glare="0.2" data-tilt-perspective="600">
+  <div class="tilt-inner">
+    <div class="card-tag">Hangout</div>
+    <div class="card-title">Urban Social Space</div>
+    <div class="card-desc">Kumpulan kedai kopi modern dan ruang terbuka publik seperti Alun-alun dan area perbukitan Tottong yang estetis.</div>
+    <div class="card-footer">
+      <div class="card-stat">
+        <span class="card-stat-num">25</span>
+        <span class="card-stat-label">Popular Spots</span>
+      </div>
+      <button class="card-btn">Explore</button>
+    </div>
+  </div>
+  <div class="card-corner"></div>
+</div>
+    </div>
+  </div>
+
+  <div class="coords" id="coords">LAT 0.0000 — LNG 0.0000</div>
+
+</div>
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+<script src="main_script.js"></script>
+<script src="transition.js"></script>
+<!-- LANGUAGE MODAL -->
+
+<div
+  class="lang-modal"
+  id="lang-modal"
+>
+
+  <div class="lang-panel">
+
+    <div
+      class="lang-title"
+      id="lang-title"
+    >
+      Mauki pakai bahasa apa?
+    </div>
+
+    <div class="lang-options">
+
+      <button
+        class="lang-option"
+        data-lang="lokal"
+      >
+        Lokal
+      </button>
+
+      <button
+        class="lang-option"
+        data-lang="english"
+      >
+        English
+      </button>
+    </div>
+    <button
+  class="lang-confirm"
+  id="lang-confirm"
+>
+  Okemi
+</button>
+
+  </div>
+
+</div>
+</body>
+</html>

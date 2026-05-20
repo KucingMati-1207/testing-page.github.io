@@ -1,0 +1,555 @@
+/* ─────────────────────────────
+   GEOFIELD DATA PAGE
+───────────────────────────── */
+
+.data-page #world {
+
+  width: 100%;
+  height: calc(100vh - 64px);
+
+  margin: 0;
+  margin-top: 64px;
+
+  transform: none !important;
+
+  overflow: visible;
+
+  position: relative;
+
+}
+
+/* ─────────────────────────────
+   SHELL
+───────────────────────────── */
+
+.data-shell {
+
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+}
+
+/* ─────────────────────────────
+   FIXED MAP SIDE
+───────────────────────────── */
+
+.data-map-side {
+
+  position: fixed;
+
+  top: 0px;
+  left: 0;
+
+  width: 100%;
+  height: calc(100vh - 64px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1;
+
+  pointer-events: auto;
+
+}
+
+.data-map-wrap {
+
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+}
+
+/* ─────────────────────────────
+   MAIN MAP
+───────────────────────────── */
+
+#data-map {
+
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+}
+
+#data-map canvas {
+
+  filter:
+    blur(1.8px)
+    contrast(1.02)
+    brightness(0.88)
+    saturate(0.82);
+
+  transform:
+    scale(1.02);
+
+}
+
+.data-map-wrap::after {
+
+  content: '';
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 35%,
+      rgba(5,8,14,0.52) 100%
+    );
+
+  pointer-events: none;
+
+  z-index: 5;
+
+}
+
+/* ─────────────────────────────
+   LIGHT THEME
+───────────────────────────── */
+
+[data-theme="light"] #data-map canvas {
+
+  filter:
+    blur(1.4px)
+    brightness(1)
+    contrast(0.95)
+    saturate(0.68);
+
+}
+
+[data-theme="light"] .data-map-wrap::after {
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 40%,
+      rgba(0,0,0,0.08) 100%
+    );
+
+}
+
+/* ─────────────────────────────
+   HERO OVERLAY
+───────────────────────────── */
+
+.data-scroll {
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 15;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding-left:
+    clamp(40px, 8vw, 140px);
+
+  pointer-events: none;
+
+}
+
+/* ─────────────────────────────
+   HERO
+───────────────────────────── */
+
+.data-hero {
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+}
+
+.data-hero-inner {
+
+  position: relative;
+
+  text-align: left;
+
+  z-index: 20;
+
+  max-width: 900px;
+
+}
+
+/* ─────────────────────────────
+   TAG
+───────────────────────────── */
+
+.data-tag {
+
+  font-size: 10px;
+
+  letter-spacing: 0.35em;
+
+  text-transform: uppercase;
+
+  color: var(--yellow);
+
+  margin-bottom: 26px;
+
+  text-align: left;
+
+  opacity: 0;
+
+  transform:
+    translateY(20px);
+
+  animation:
+    tagReveal 1s
+    cubic-bezier(0.22,1,0.36,1)
+    forwards;
+
+  animation-delay: 0.2s;
+
+}
+
+[data-theme="light"] .data-tag {
+
+  color:
+    rgba(0,0,0,0.68);
+
+}
+
+/* ─────────────────────────────
+   TITLE
+───────────────────────────── */
+
+.data-title {
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  line-height: 0.88;
+
+}
+
+.data-title span {
+
+  position: relative;
+
+  display: block;
+
+  overflow: hidden;
+
+  font-size:
+    clamp(4rem, 9vw, 8rem);
+
+  font-weight: 700;
+
+  letter-spacing: -0.04em;
+
+  color: var(--text-primary);
+
+  opacity: 0;
+
+  transform:
+    translateY(120px)
+    skewY(8deg);
+
+  animation:
+    titleSliceIn 1.35s
+    cubic-bezier(0.22,1,0.36,1)
+    forwards;
+
+}
+
+/* stagger */
+
+.data-title span:nth-child(1) {
+  animation-delay: 0.15s;
+}
+
+.data-title span:nth-child(2) {
+  animation-delay: 0.32s;
+}
+
+.data-title span:nth-child(3) {
+  animation-delay: 0.48s;
+}
+
+/* ─────────────────────────────
+   INFO SECTION
+───────────────────────────── */
+
+.info-section {
+
+  position: relative;
+
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+
+  padding:
+    120px 5vw;
+
+  z-index: 10;
+
+  background:
+    var(--bg-base);
+
+}
+
+/* ─────────────────────────────
+   INFO LAYOUT
+───────────────────────────── */
+
+.info-layout {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 80px;
+
+  width: 100%;
+
+}
+
+/* ─────────────────────────────
+   STACKED INFO
+───────────────────────────── */
+
+.info-stack {
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 80px;
+
+  width: 34%;
+
+}
+
+/* ─────────────────────────────
+   DISTRICT MAP
+───────────────────────────── */
+
+.district-map-shell {
+
+  position: relative;
+
+  width: 66%;
+  height: 520px;
+
+  overflow: hidden;
+
+  border:
+    1px solid rgba(255,255,255,0.04);
+
+  background:
+    rgba(255,255,255,0.02);
+
+  backdrop-filter:
+    blur(12px);
+
+}
+
+#district-map {
+
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+}
+
+#district-map canvas {
+
+  filter:
+    contrast(1.02)
+    brightness(0.92)
+    saturate(0.8);
+
+}
+
+/* ─────────────────────────────
+   INFO BLOCK
+───────────────────────────── */
+
+.info-block {
+
+  position: relative;
+
+}
+
+.info-number {
+
+  font-size:
+    clamp(4rem, 10vw, 8rem);
+
+  font-weight: 700;
+
+  line-height: 0.9;
+
+  color: var(--yellow);
+
+}
+
+.info-label {
+
+  position: absolute;
+
+  left: 8px;
+  top: 55%;
+
+  font-size: 13px;
+
+  letter-spacing: 0.42em;
+
+  text-transform: uppercase;
+
+  color: var(--text-secondary);
+
+  animation:
+    floatLabel 4s ease-in-out infinite;
+
+}
+
+/* ─────────────────────────────
+   REVEAL
+───────────────────────────── */
+
+.reveal {
+
+  opacity: 0;
+
+  transform:
+    translateY(90px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+
+}
+
+.reveal.visible {
+
+  opacity: 1;
+
+  transform:
+    translateY(0);
+
+}
+
+/* ─────────────────────────────
+   ANIMATIONS
+───────────────────────────── */
+
+@keyframes titleSliceIn {
+
+  0% {
+
+    opacity: 0;
+
+    transform:
+      translateY(140px)
+      skewY(10deg);
+
+    filter:
+      blur(12px);
+
+  }
+
+  100% {
+
+    opacity: 1;
+
+    transform:
+      translateY(0px)
+      skewY(0deg);
+
+    filter:
+      blur(0px);
+
+  }
+
+}
+
+@keyframes tagReveal {
+
+  0% {
+
+    opacity: 0;
+
+    transform:
+      translateY(18px);
+
+  }
+
+  100% {
+
+    opacity: 1;
+
+    transform:
+      translateY(0px);
+
+  }
+
+}
+
+@keyframes floatLabel {
+
+  0%,100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+}
+
+/* ─────────────────────────────
+   MOBILE
+───────────────────────────── */
+
+@media (max-width: 980px) {
+
+  .info-layout {
+
+    flex-direction: column;
+
+  }
+
+  .info-stack {
+
+    width: 100%;
+
+  }
+
+  .district-map-shell {
+
+    width: 100%;
+    height: 420px;
+
+  }
+
+}
